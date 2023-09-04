@@ -1,6 +1,7 @@
 # pydrc: Python Dose-Response Curves
 
-[Python_project_logo.pdf](https://github.com/Mr-Mathias-F/pydrc/files/12515748/Python_project_logo.pdf)
+![Python_project_logo](https://github.com/Mr-Mathias-F/pydrc/assets/74455376/17e30ecb-4d89-44a2-aa8f-d79381bd0af7)
+
 
 
 pydrc is a powerful Python package specially designed for the analysis and visualization of dose-response data in fields like toxicology, pharmacology, and environmental science. 
