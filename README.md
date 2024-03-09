@@ -17,3 +17,10 @@ The package simplifies the process of implementing various dose-response models,
 Built for the scientific community, pydrc bridges the gap between intricate dose-response analyses and Python's ease of use, empowering researchers to concentrate on interpreting results instead of wrestling with the coding of analyses.
 
 Contributions are welcome.
+
+## Todo
+
+- Implemention of multiple optimization algorithms for existing functions 
+- Summary tables for parameter estimates
+- Early implementation for dose-response curve visualization in Matplotlib and Seaborn 
+
