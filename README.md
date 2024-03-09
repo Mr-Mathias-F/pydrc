@@ -20,13 +20,16 @@ Contributions are welcome.
 
 ## Example
 
-The fou
 
 ```
-toxin_mod = LogisticP4Model(data = toxin_df, x = 'Dose', y = 'Response) # Include your DataFrame, dose- or concentration-variable, and response variable
-toxin_mod.fit() # Fit the model to your data
-toxin_mod.predict(x = X) # X the the range of desired predicted values of y (response
-toxin_mod.plot() # Plot the output
+# Include your DataFrame, dose- or concentration variable, and response variable
+toxin_mod = LogisticP4Model(data = toxin_df, x = 'Dose', y = 'Response)
+# Fit the model to your data
+toxin_mod.fit()
+# X the the range of desired predicted values of y (response)
+toxin_mod.predict(x = X)
+# Plot the final model
+toxin_mod.plot() 
 ```
 ![Hello_pydrc](https://github.com/Mr-Mathias-F/pydrc/assets/74455376/4610b5f6-7592-44fa-bf13-e5342ae90761)
 
