@@ -31,7 +31,9 @@ toxin_mod.predict(x = X)
 # Plot the final model
 toxin_mod.plot() 
 ```
-![Hello_pydrc](https://github.com/Mr-Mathias-F/pydrc/assets/74455376/4610b5f6-7592-44fa-bf13-e5342ae90761)
+
+![Hello_pydrc](https://github.com/Mr-Mathias-F/pydrc/assets/74455376/2ad5f81f-ca4c-4ebf-94ac-f93de6e5408e)
+
 
 
 ## Todo
