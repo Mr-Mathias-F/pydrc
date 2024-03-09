@@ -20,21 +20,15 @@ Contributions are welcome.
 
 ## Example
 
-The four-parameter model can be represented as:
+The fou
 
-\[
-y = a + \frac{{b - a}}{{1 + (x / c)^d}}
-\]
-
-where:
-- \( y \) is the response variable,
-- \( x \) is the predictor variable,
-- \( a \) is the lower asymptote,
-- \( b \) is the upper asymptote,
-- \( c \) is the half-maximum value of \( x \),
-- \( d \) is the slope parameter.
-
-
+```
+toxin_mod = LogisticP4Model(data = toxin_df, x = 'Dose', y = 'Response) # Include your DataFrame, dose- or concentration-variable, and response variable
+toxin_mod.fit() # Fit the model to your data
+toxin_mod.predict(x = X) # X the the range of desired predicted values of y (response
+toxin_mod.plot() # Plot the output
+```
+![Hello_pydrc](https://github.com/Mr-Mathias-F/pydrc/assets/74455376/4610b5f6-7592-44fa-bf13-e5342ae90761)
 
 
 ## Todo
