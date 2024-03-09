@@ -18,6 +18,25 @@ Built for the scientific community, pydrc bridges the gap between intricate dose
 
 Contributions are welcome.
 
+## Example
+
+The four-parameter model can be represented as:
+
+\[
+y = a + \frac{{b - a}}{{1 + (x / c)^d}}
+\]
+
+where:
+- \( y \) is the response variable,
+- \( x \) is the predictor variable,
+- \( a \) is the lower asymptote,
+- \( b \) is the upper asymptote,
+- \( c \) is the half-maximum value of \( x \),
+- \( d \) is the slope parameter.
+
+
+
+
 ## Todo
 
 - Implemention of multiple optimization algorithms for existing functions 
