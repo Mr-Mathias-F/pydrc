@@ -3,7 +3,7 @@
 ![Python_project_logo](https://github.com/Mr-Mathias-F/pydrc/assets/74455376/47543590-e776-43cd-a53f-c150eb495069)
 
 
-pydrc is a powerful Python package specially designed for the analysis and visualization of dose-response data in fields like toxicology, pharmacology, and environmental sciences. 
+pydrc is a powerful Python module specially designed for the analysis and visualization of dose-response data in fields like toxicology, pharmacology, and environmental sciences. 
 
 The package simplifies the process of implementing various dose-response models, offering a uniform interface for a wide range of common models, including but not limited to Hill, Logistic, Gompertz models, and more.
 
