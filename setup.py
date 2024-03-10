@@ -9,7 +9,8 @@ setup(
     name='pydrc',
     version='0.0.1',
     description='Python module for fitting, analysis and visualization of dose-response data',
-    author='Mathias Fon, Hallvard Wæhler',
+    license='MIT'
+    authors='Mathias Fon, Hallvard Wæhler',
     url='https://github.com/Mr-Mathias-F/pydrc',
     packages=['pydrc'],
     install_requires=read_requirements(),
