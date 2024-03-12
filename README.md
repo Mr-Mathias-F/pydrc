@@ -27,6 +27,7 @@ toxin_mod = LogisticP4Model(data = toxin_df, x = 'Dose', y = 'Response')
 # Fit the model to your data
 toxin_mod.fit()
 # X the the range of desired predicted values of y (response)
+X = np.linspace(0.1, 10000, 10000)
 toxin_mod.predict(x = X)
 # Plot the final model
 toxin_mod.plot() 
