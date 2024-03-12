@@ -23,7 +23,7 @@ Contributions are welcome.
 
 ```
 # Include your DataFrame, dose- or concentration variable, and response variable
-toxin_mod = LogisticP4Model(data = toxin_df, x = 'Dose', y = 'Response)
+toxin_mod = LogisticP4Model(data = toxin_df, x = 'Dose', y = 'Response')
 # Fit the model to your data
 toxin_mod.fit()
 # X the the range of desired predicted values of y (response)
