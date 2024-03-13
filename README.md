@@ -44,7 +44,7 @@ toxin_mod.plot()
 
 ## Todo
 
-- Implemention of multiple optimization algorithms for existing functions 
-- Summary tables for parameter estimates
-- Early implementation for dose-response curve visualization in Matplotlib and Seaborn 
+- Implementation of multiple optimization algorithms for existing functions (Current: Levenberg–Marquardt algorithm for unconstrained optimization; Trust Region Reflective for constrained optimization)
+- Curve ID argument for summary table and visualization of multiple treatment groups
+- Automatic and customizable dose-response curve visualization in Matplotlib and Seaborn with **kwargs  
 
