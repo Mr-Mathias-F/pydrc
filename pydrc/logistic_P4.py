@@ -17,7 +17,7 @@ class LogisticP4Model:
         f = c + (d - c) / (1 + np.exp(b * (np.log(x) - np.log(e))))
         return f
 
-    def fit(self, x = None, y = None, summary = True, keep_summary = False, param_constraint = None, n_dec = 6):
+    def fit(self, x = None, y = None, summary = True, param_constraint = None, n_dec = 6):
         """Estimate parameters (b, c, d, e) of the log-logistic curve from data"""
 
         ### Model data input ###
@@ -83,8 +83,6 @@ class LogisticP4Model:
                                            't-value': np.round(self.params / self.std_error, decimals = n_dec),
                                            'p-value': np.round((1 - stats.t(df = len(y_data) - len(self.params)).cdf(x = self.params / self.std_error)) * 2, decimals = n_dec)
                                             })
-        if keep_summary == True:
-            return summary_params
         else:
             print(summary_params)
             print()
