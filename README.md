@@ -47,5 +47,6 @@ toxin_mod.plot()
 - Implementation of multiple optimization algorithms for existing functions (Current: Levenberg–Marquardt algorithm for unconstrained optimization; Trust Region Reflective for constrained optimization)
 - Implement superfunction for data input, variable arguments and specified function to be optimized (built-in functions for now)
 - Curve ID argument for summary table and visualization of multiple treatment groups
-- Automatic and customizable dose-response curve visualization in Matplotlib and Seaborn with ****kwargs**  
+- Automatic and customizable dose-response curve visualization in Matplotlib and Seaborn with ****kwargs**
+- Integrating and testing each function
 
