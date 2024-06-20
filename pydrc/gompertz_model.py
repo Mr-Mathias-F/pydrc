@@ -1,7 +1,6 @@
 from .dose_response import DoseResponse
 
 class GompertzModel(DoseResponse):
-    def gompertz_model(self, x, b, c, d, e):
+    def model_function(self, x, b, c, d, e):
         """Calculate Gompertz model"""
-        f = c + (d - c) * np.exp(-np.exp(b * (x - e)))
-        return f
+        return c + (d - c) * np.exp(-np.exp(b * (x - e)))
