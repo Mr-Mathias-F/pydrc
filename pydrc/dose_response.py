@@ -1,15 +1,9 @@
-import warnings
-import numpy as np
-from scipy import stats
-from scipy.optimize import curve_fit
-import pandas as pd
-
 class DoseResponse:
     def __init__(self, data=None, x=None, y=None, param_constraint=None):
         self.params = None
         self.data = data
-        self.x = x
-        self.y = y
+        self.x = data.columns[0]
+        self.y = data.columns[1]
         self.param_constraint = np.array(param_constraint)
 
     def model_function(self, x, *params):
@@ -18,24 +12,21 @@ class DoseResponse:
 
     def fit(self, x=None, y=None, param_constraint=None, n_dec=6):
         """Estimate parameters of the model from data"""
-
         # Model data input
-        if self.x is None and x is None:
-            raise ValueError("Please provide a valid numeric array for the X-axis")
-        if self.y is None and y is None:
-            raise ValueError("Please provide a valid numeric array for the Y-axis")
-        if self.x is None:
-            x_data = self.data[x]
+        if x is not None:
             self.x = x
-        else:
-            x_data = self.data[self.x]
-        if self.y is None:
-            y_data = self.data[y]
+        if y is not None:
             self.y = y
-        else:
-            y_data = self.data[self.y]
+        if self.data is None:
+            raise ValueError("Data must be provided")
+
+        x_data = self.data[self.x]
+        y_data = self.data[self.y]
 
         # Model boundary constraints
+        if param_constraint is not None:
+            self.param_constraint = np.array(param_constraint)
+        
         if len(np.shape(self.param_constraint)) == 1:
             lower_bound = np.where(self.param_constraint == np.inf, -np.inf, self.param_constraint - 1e-14)
             upper_bound = np.where(self.param_constraint == np.inf, np.inf, self.param_constraint + 1e-14)
