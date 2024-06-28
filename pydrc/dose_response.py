@@ -1,3 +1,10 @@
+import warnings
+import numpy as np
+from scipy import stats
+from scipy.optimize import curve_fit
+import pandas as pd
+import matplotlib.pyplot as plt
+
 class DoseResponse:
     def __init__(self, data=None, x=None, y=None, param_constraint=None):
         self.params = None
@@ -72,3 +79,15 @@ class DoseResponse:
         else:
             x_pred = x
         return self.model_function(x_pred, *self.params)
+
+    def plot(self):
+        """Plot data and fitted model"""
+        x = self.data[self.x]
+        y = self.data[self.y]
+        response = self.data[self.y]
+        predictions = self.predict(x)
+        x_ = np.linspace(min(x), max(x), len(x))
+        plt.plot(predictions, label="prediction")
+        plt.plot(response, ".", label="response")
+        plt.legend()
+        plt.show()
