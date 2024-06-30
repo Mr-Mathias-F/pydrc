@@ -19,7 +19,6 @@ class DoseResponse:
 
     def fit(self, x=None, y=None, param_constraint=None, n_dec=6):
         """Estimate parameters of the model from data"""
-        # Model data input
         if x is not None:
             self.x = x
         if y is not None:
@@ -61,14 +60,14 @@ class DoseResponse:
         # Model summary table
         summary_params = pd.DataFrame({
             'Parameter': [f'param_{i}' for i in range(len(self.params))],
-            'Estimate': np.round(self.params, decimals=n_dec),
-            'Std. Error': np.round(self.std_error, decimals=n_dec),
-            't-value': np.round(self.params / self.std_error, decimals=n_dec),
-            'p-value': np.round((1 - stats.t(df=len(y_data) - len(self.params)).cdf(x=self.params / self.std_error)) * 2, decimals=n_dec)
+            'Estimate': np.round(self.params, n_dec),
+            'Std. Error': np.round(self.std_error, n_dec),
+            't-value': np.round(self.params / self.std_error, n_dec),
+            'p-value': np.round((1 - stats.t(df=len(y_data) - len(self.params)).cdf(x=self.params / self.std_error)) * 2, n_dec)
         })
         print(summary_params)
         print()
-        print('Residual Standard Error (RSE):', np.round(self.RSE, decimals=n_dec), '   Degrees of Freedom:', len(y_data) - len(self.params))
+        print('Residual Standard Error (RSE):', np.round(self.RSE, n_dec), '   Degrees of Freedom:', len(y_data) - len(self.params))
 
     def predict(self, x=None):
         """Predict the output of the model"""
