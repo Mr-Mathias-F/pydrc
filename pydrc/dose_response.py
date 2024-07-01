@@ -26,8 +26,8 @@ class DoseResponse:
         if self.data is None:
             raise ValueError("Data must be provided")
 
-        x_data = self.data[self.x]
-        y_data = self.data[self.y]
+        x = self.data[self.x]
+        y = self.data[self.y]
 
         # Model boundary constraints
         if param_constraint is not None:
@@ -46,16 +46,16 @@ class DoseResponse:
 
         # Model fitting
         warnings.filterwarnings("ignore", category=RuntimeWarning)
-        params, covariance = curve_fit(self.model_function, x_data, y_data, bounds=mod_bounds)
+        params, covariance = curve_fit(self.model_function, x, y, bounds=mod_bounds)
         warnings.filterwarnings("default", category=RuntimeWarning)
 
         # Parameter extraction, standard error estimates and residual standard error of the model
         self.params = params
         self.std_error = np.sqrt(np.diag(covariance))
         self.residuals = self.data[self.y] - self.predict()
-        self.n_y_data = len(self.data[self.y])
+        self.n_y = len(self.data[self.y])
         self.n_params = len(self.params)
-        self.RSE = np.sqrt(np.sum(self.residuals**2) / (self.n_y_data - self.n_params))
+        self.RSE = np.sqrt(np.sum(self.residuals**2) / (self.n_y - self.n_params))
 
         # Model summary table
         summary_params = pd.DataFrame({
@@ -63,11 +63,11 @@ class DoseResponse:
             'Estimate': np.round(self.params, n_dec),
             'Std. Error': np.round(self.std_error, n_dec),
             't-value': np.round(self.params / self.std_error, n_dec),
-            'p-value': np.round((1 - stats.t(df=len(y_data) - len(self.params)).cdf(x=self.params / self.std_error)) * 2, n_dec)
+            'p-value': np.round((1 - stats.t(df=len(y) - len(self.params)).cdf(x=self.params / self.std_error)) * 2, n_dec)
         })
         print(summary_params)
         print()
-        print('Residual Standard Error (RSE):', np.round(self.RSE, n_dec), '   Degrees of Freedom:', len(y_data) - len(self.params))
+        print('Residual Standard Error (RSE):', np.round(self.RSE, n_dec), '   Degrees of Freedom:', len(y) - len(self.params))
 
     def predict(self, x=None):
         """Predict the output of the model"""
