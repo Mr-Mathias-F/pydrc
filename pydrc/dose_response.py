@@ -6,12 +6,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 class DoseResponse:
-    def __init__(self, data=None, x=None, y=None, param_constraint=None):
-        self.params = None
+    def __init__(self, data=None, param_constraint=None):
         self.data = data
         self.x = data.columns[0]
         self.y = data.columns[1]
         self.param_constraint = np.array(param_constraint)
+        self.params = None
 
     def model_function(self, x, *params):
         """Override this method in subclasses with the specific model function"""
@@ -32,7 +32,7 @@ class DoseResponse:
         # Model boundary constraints
         if param_constraint is not None:
             self.param_constraint = np.array(param_constraint)
-        
+
         if len(np.shape(self.param_constraint)) == 1:
             lower_bound = np.where(self.param_constraint == np.inf, -np.inf, self.param_constraint - 1e-14)
             upper_bound = np.where(self.param_constraint == np.inf, np.inf, self.param_constraint + 1e-14)
@@ -51,23 +51,23 @@ class DoseResponse:
 
         # Parameter extraction, standard error estimates and residual standard error of the model
         self.params = params
-        self.std_error = np.sqrt(np.diag(covariance))
-        self.residuals = self.data[self.y] - self.predict()
-        self.n_y = len(self.data[self.y])
-        self.n_params = len(self.params)
-        self.RSE = np.sqrt(np.sum(self.residuals**2) / (self.n_y - self.n_params))
+        std_error = np.sqrt(np.diag(covariance))
+        residuals = self.data[self.y] - self.predict()
+        n_y = len(self.data[self.y])
+        n_params = len(self.params)
+        rse = np.sqrt(np.sum(residuals**2) / (n_y - n_params))
 
         # Model summary table
         summary_params = pd.DataFrame({
             'Parameter': [f'param_{i}' for i in range(len(self.params))],
             'Estimate': np.round(self.params, n_dec),
-            'Std. Error': np.round(self.std_error, n_dec),
-            't-value': np.round(self.params / self.std_error, n_dec),
-            'p-value': np.round((1 - stats.t(df=len(y) - len(self.params)).cdf(x=self.params / self.std_error)) * 2, n_dec)
+            'Std. Error': np.round(std_error, n_dec),
+            't-value': np.round(self.params / std_error, n_dec),
+            'p-value': np.round((1 - stats.t(df=len(y) - len(self.params)).cdf(x=self.params / std_error)) * 2, n_dec)
         })
         print(summary_params)
         print()
-        print('Residual Standard Error (RSE):', np.round(self.RSE, n_dec), '   Degrees of Freedom:', len(y) - len(self.params))
+        print('Residual Standard Error (RSE):', np.round(rse, n_dec), '   Degrees of Freedom:', len(y) - len(self.params))
 
     def predict(self, x=None):
         """Predict the output of the model"""
@@ -82,10 +82,8 @@ class DoseResponse:
     def plot(self):
         """Plot data and fitted model"""
         x = self.data[self.x]
-        y = self.data[self.y]
         response = self.data[self.y]
         predictions = self.predict(x)
-        x_ = np.linspace(min(x), max(x), len(x))
         plt.plot(predictions, label="prediction")
         plt.plot(response, ".", label="response")
         plt.legend()
