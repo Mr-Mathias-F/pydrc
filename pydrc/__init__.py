@@ -14,3 +14,6 @@ from .weibull_P3 import WeibullP3Model
 from .weibull_P4 import WeibullP4Model
 
 __all__ = ['DoseResponse', 'ARModel', 'ExponentialDecayModel', 'GompertzModel', 'HillEquationModel', 'LogisticP2Model', 'LogisticP3Model', 'LogisticP4Model', 'MichaelisMentenModel', 'NecModel', 'TwoPhaseModel', 'WeibullP2Model', 'WeibullP3Model', 'WeibullP4Model']
+
+def list_models():
+    print(*[f'{cls_name}()' for cls_name, cls_obj in globals().items() if isinstance(cls_obj, type) and issubclass(cls_obj, DoseResponse) and cls_obj is not DoseResponse], sep='\n')
