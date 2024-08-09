@@ -1,3 +1,4 @@
+from .dose_response import DoseResponse
 from .ar_model import ARModel
 from .exponential_decay import ExponentialDecayModel
 from .gompertz_model import GompertzModel
@@ -12,4 +13,4 @@ from .weibull_P2 import WeibullP2Model
 from .weibull_P3 import WeibullP3Model
 from .weibull_P4 import WeibullP4Model
 
-__all__ = ['ARModel', 'ExponentialDecayModel', 'GompertzModel', 'HillEquationModel', 'LogisticP2Model', 'LogisticP3Model', 'LogisticP4Model', 'MichaelisMentenModel', 'NecModel', 'TwoPhaseModel', 'WeibullP2Model', 'WeibullP3Model', 'WeibullP4Model']
+__all__ = ['DoseResponse', 'ARModel', 'ExponentialDecayModel', 'GompertzModel', 'HillEquationModel', 'LogisticP2Model', 'LogisticP3Model', 'LogisticP4Model', 'MichaelisMentenModel', 'NecModel', 'TwoPhaseModel', 'WeibullP2Model', 'WeibullP3Model', 'WeibullP4Model']
