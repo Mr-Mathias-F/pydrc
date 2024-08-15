@@ -18,30 +18,6 @@ Built for the scientific community, pydrc bridges the gap between intricate dose
 
 Contributions are welcome.
 
-## Example
-
-
-```
-# Include your DataFrame, dose- or concentration variable, and response variable
-toxin_mod = LogisticP4Model(data = toxin_df, x = 'Dose', y = 'Response')
-# Fit the model to your data
-toxin_mod.fit()
-# X the the range of desired predicted values of y (response)
-X = np.linspace(0.1, 10000, 10000)
-toxin_mod.predict(x = X)
-# Plot the final model
-toxin_mod.plot() 
-```
-
-![Hello_pydrc](https://github.com/Mr-Mathias-F/pydrc/assets/74455376/dec25c93-b73a-44aa-9656-ff168fcb9f90)
-
-| Parameter | Estimate   | Std. Error | t-value    | p-value  |
-|-----------|------------|------------|------------|----------|
-| b         | 1.467726   | 0.089677   | 16.366838  | 0.000000 |
-| c         | 100.320987 | 0.817869   | 122.661497 | 0.000000 |
-| d         | 6.261767   | 1.208848   | 5.179944   | 0.000009 |
-| e         | 101.744631 | 4.820496   | 21.106674  | 0.000000 |
-
 ## Todo
 
 - Implementation of multiple optimization algorithms for existing functions (Current: Levenberg–Marquardt algorithm for unconstrained optimization; Trust Region Reflective for constrained optimization)
